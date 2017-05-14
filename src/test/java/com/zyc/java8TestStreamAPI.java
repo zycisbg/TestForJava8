@@ -75,7 +75,7 @@ public class java8TestStreamAPI {
     }
 
     /**
-     * stream API.并行过滤
+     * stream API.并行过滤..
       */
     @Test
     public void test3(){
