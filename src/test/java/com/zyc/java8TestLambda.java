@@ -68,7 +68,7 @@ public class java8TestLambda {
      * java8 提供的Function函数式接口使用，
      * apply方法，传入一个类型，返回令一个类型，
      * 一般为了转换。
-     * lambda 表达式的主体  相当于执行了apply方法的内容
+     * lambda 表达式的主体  相当于执行了apply方法的内容..
      * @param list
      * @param function
      * @param <T>
