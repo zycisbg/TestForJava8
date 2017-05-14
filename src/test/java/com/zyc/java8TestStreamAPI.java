@@ -102,7 +102,7 @@ public class java8TestStreamAPI {
 //                  .collect(Collectors.groupingBy(Transaction::getCurrency));
     }
     /**
-     * stream API。根据条件过滤..
+     * stream API。根据条件过滤....
      */
     @Test
     public void test1(){
