@@ -4,10 +4,7 @@ import com.zyc.java8.filter.AppleFilter;
 import com.zyc.java8.po.Apple;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -183,13 +180,22 @@ public class java8TestLambda {
      */
     @Test
     public void test3(){
-        list.sort(new Comparator<Apple>() {
+        List<Apple> apples = new LinkedList<>();
+        for(int i=0;i<10000;i++){
+            apples.add(new Apple("yellow",2.2,3.3+i));
+        }
+
+        long l = System.currentTimeMillis();
+        apples.sort(new Comparator<Apple>() {
             @Override
             public int compare(Apple o1, Apple o2) {
                 return o2.getPrice().compareTo(o1.getPrice());
             }
         });
-        list.forEach(System.out::println);
+        long l1 = System.currentTimeMillis();
+
+        System.out.println(l1-l);
+     //   list.forEach(System.out::println);
 
 
     }
@@ -199,8 +205,17 @@ public class java8TestLambda {
      */
     @Test
     public void test4(){
-        list.sort((Apple o1,Apple o2)->o1.getPrice().compareTo(o2.getPrice()));
-        list.forEach(System.out::println);
+        List<Apple> apples = new LinkedList<>();
+        for(int i=0;i<10000;i++){
+            apples.add(new Apple("yellow",2.2,3.3+i));
+        }
+
+        long l = System.currentTimeMillis();
+        apples.sort((Apple o1,Apple o2)->o1.getPrice().compareTo(o2.getPrice()));
+        long l1 = System.currentTimeMillis();
+
+        System.out.println(l1-l);
+       // list.forEach(System.out::println);
     }
     /**
      * test1,test2使用

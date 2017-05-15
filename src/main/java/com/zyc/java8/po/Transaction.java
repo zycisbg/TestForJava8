@@ -48,4 +48,25 @@ public class Transaction {
     public void setMoney(Double money) {
         this.money = money;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Transaction that = (Transaction) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (currency != null ? !currency.equals(that.currency) : that.currency != null) return false;
+        return money != null ? money.equals(that.money) : that.money == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (currency != null ? currency.hashCode() : 0);
+        result = 31 * result + (money != null ? money.hashCode() : 0);
+        return result;
+    }
 }
