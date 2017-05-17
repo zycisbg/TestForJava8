@@ -19,6 +19,11 @@ public class TestForJava8ApplicationTests {
 			new Person(3,"laowu",20,new BigDecimal(500)),
 			new Person(4,"laoliu",22,new BigDecimal(600)));
 
+
+    @Test
+    public void test10(){
+
+    }
 	@Test
 	public void contextLoads() {
 		list.forEach((Person p)-> System.out.println(p));
@@ -74,6 +79,8 @@ public class TestForJava8ApplicationTests {
         this.filterObject(list,(Integer i)-> i % 1 == 0).forEach(System.out::println);
 
     }
+
+
 
 
 
