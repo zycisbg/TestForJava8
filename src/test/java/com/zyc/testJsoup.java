@@ -27,6 +27,11 @@ public class testJsoup {
         p.println(100);
         p.close();
     }
+
+    /**
+     * 查询智联招聘上 所有招聘信息 包含java8的企业
+     * @throws IOException
+     */
     @Test
     public void test1() throws IOException{
         //得到一个 href的 集合

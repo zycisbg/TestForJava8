@@ -22,6 +22,10 @@ import java.util.List;
  */
 public class AutoHome {
 
+    /**
+     * 查询汽车之家 所有在售车型的价格（如果有价格）
+     * @throws Exception
+     */
     @Test
     public void test() throws Exception{
         //http://www.autohome.com.cn/car/

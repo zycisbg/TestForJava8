@@ -2,6 +2,7 @@ package com.zyc;
 
 import com.zyc.java8.filter.AppleFilter;
 import com.zyc.java8.po.Apple;
+import com.zyc.java8.po.Person;
 import org.junit.Test;
 
 import java.util.*;
@@ -232,6 +233,20 @@ public class java8TestLambda {
             }
         }
         return returnList;
+    }
+
+    /**
+     *
+     */
+    public void testVar(){
+        List<String> list = new LinkedList();
+        Person person = new Person();
+        for (String str :list){
+//            Person person = new Person();
+//            Person per1 =new Person();
+
+
+        }
     }
 
 
