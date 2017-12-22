@@ -7,9 +7,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.partitioningBy;
+import static java.util.stream.Collectors.*;
 
 /**
  * Created by zyc on 17/5/15.
@@ -51,7 +49,7 @@ public class TestForCollectors {
     @Test
     public void test8(){
         int i = Runtime.getRuntime().availableProcessors();
-        System.setProperty("java.util.concurrent.ForkJoinPool.Common.parallelism","12");
+//        System.setProperty("java.util.concurrent.ForkJoinPool.Common.parallelism","12");
         System.out.println(i);
     }
     @Test
@@ -93,8 +91,9 @@ public class TestForCollectors {
      */
     @Test
     public void test4(){
-        list.stream()
-                  .collect(Collectors.summarizingInt(Transactions::getValue));
+        IntSummaryStatistics collect = list.stream()
+                .collect(Collectors.summarizingInt(Transactions::getValue));
+
     }
 
     /**
@@ -137,6 +136,12 @@ public class TestForCollectors {
         Transactions transactions = list.stream()
                   .collect(Collectors.maxBy((Comparator.comparing(Transactions::getValue)))).get();
 
+        Optional<Transactions> collect = list.stream().collect(maxBy(Comparator.comparing(Transactions::getValue)));
+        Map map = new HashMap();
+        collect.ifPresent(a->map.put("key",a));
+
+        Object key = map.get("key");
+        System.out.println(key);
         System.out.println(transactions.getValue());
     }
 }

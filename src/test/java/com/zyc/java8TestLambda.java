@@ -32,6 +32,17 @@ public class java8TestLambda {
                 ,new Apple("yellow",5.5,9.2));
 
     /**
+     * 复合型使用
+     */
+    @Test
+    public void test11(){
+        Consumer c = (s)-> System.out.println(s+"123");
+        Consumer c1 = (s)-> System.out.println(s);
+        c.andThen(c1).accept("asd");
+
+    }
+
+    /**
      * 构造函数
      */
     @Test
@@ -96,8 +107,11 @@ public class java8TestLambda {
 
     @Test
     public void test8(){
-        String blue = function(new Apple("blue", 2.2, 3.3), (Apple apple) -> apple.getColor());
+        Function<Apple,String> function1 = (Apple apple)-> apple.toString();
+        String apply = function1.apply(new Apple("blue", 2.2, 3.3));
+        Function<Apple,String> function2 = (Apple apple)-> apple.getColor();
 
+        String blue = function(new Apple("blue", 2.2, 3.3), (Apple apple) -> apple.getColor ());
         System.out.println(blue);
     }
 
@@ -167,6 +181,7 @@ public class java8TestLambda {
         List<Apple> appleByParam = getAppleByParam(list, Apple::isRed);
 
         appleByParam.forEach(System.out::println);
+        appleByParam.forEach(a-> System.out.println(a));
     }
 
     @Test
@@ -212,11 +227,15 @@ public class java8TestLambda {
         }
 
         long l = System.currentTimeMillis();
+
         apples.sort((Apple o1,Apple o2)->o1.getPrice().compareTo(o2.getPrice()));
+
+        apples.sort(Comparator.comparing(Apple::getPrice));
+
         long l1 = System.currentTimeMillis();
 
         System.out.println(l1-l);
-       // list.forEach(System.out::println);
+        apples.forEach(System.out::println);
     }
     /**
      * test1,test2使用

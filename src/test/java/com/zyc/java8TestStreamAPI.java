@@ -39,13 +39,14 @@ public class java8TestStreamAPI {
                   .map(d -> 1)
                   .reduce((a,b)->a+b)
                   .ifPresent(System.out::print);
-        transactions.stream()
-                  .count();
+        long count = transactions.stream()
+                .count();
+        System.out.println(count);
     }
 
     /**
      * 归纳，
-     * 算和活着算积  等等。。
+     * 算和或者算积  等等。。
      * 如果没有初始值， 则返回Optional对象
      */
     @Test
@@ -53,8 +54,8 @@ public class java8TestStreamAPI {
         //求和
         transactions.stream()
                   .map(Transaction::getMoney)
-//                  .reduce(0.0, (a, b) -> a + b);   有初始值的情况下， 返回 结果类型、
-                    .reduce(Double::sum);
+                  .reduce( (a, b) -> a + b);   //有初始值的情况下， 返回 结果类型、
+//                    .reduce(Double::sum);
     }
 
     /**
@@ -124,9 +125,9 @@ public class java8TestStreamAPI {
 
         collect.forEach(System.out::println);
 
-        transactions.stream()
-                  .map(Transaction::getMoney)
-                  .collect(toList());
+        List<Double> collect1 = transactions.stream()
+                .map(Transaction::getMoney)
+                .collect(toList());
     }
 
     /**
@@ -219,6 +220,8 @@ public class java8TestStreamAPI {
                   .filter((Transaction t) -> t.getMoney()>10)
                   .collect(toList())
                   .forEach(System.out::println);
+
+        
     }
 
     /**
